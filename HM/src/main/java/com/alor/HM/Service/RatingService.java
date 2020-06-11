@@ -12,8 +12,7 @@ public interface RatingService {
 
 	public void deleteUser(int ratingId);
 
-
-	List<RatingBean> getAllReviews(int hotelId, String gender, String city);
+	public List<RatingBean> getAllReviews(int hotelId, String gender, String city);
 
 	public List<RatingEntity> getRatingsByHotelIdsIn(Set<Integer> keySet);
 

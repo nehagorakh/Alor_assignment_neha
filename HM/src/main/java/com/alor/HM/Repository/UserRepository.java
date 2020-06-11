@@ -11,5 +11,4 @@ import com.alor.HM.Entity.UserEntity;
 public interface UserRepository extends CrudRepository<UserEntity, Integer>{
 
 	List<UserEntity> findByIdIn(List<Integer> userIds);
-
 }

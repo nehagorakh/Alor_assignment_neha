@@ -16,25 +16,25 @@ import lombok.Data;
 @JsonNaming(PropertyNamingStrategy.SnakeCaseStrategy.class)
 @DynamicUpdate
 public class HotelEntity {
-	
+
 	@Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	String name;
-	
+
 	@CreationTimestamp
 	private Timestamp createdAt;
-	 
+
 	@UpdateTimestamp
 	private Timestamp updatedAt;
-	
-    private int createdBy;
-    private int updatedBy;    
-    private int numberOfRooms;
-    private String city;
-    private long costOfStay;
-    
-    @Column(name = "is_active")
-    private int isActive;
-    
+
+	private int createdBy;
+	private int updatedBy;
+	private int numberOfRooms;
+	private String city;
+	private long costOfStay;
+
+	@Column(name = "is_active")
+	private int isActive;
+
 }

@@ -20,7 +20,6 @@ public class HotelFacilityServiceImpl implements HotelFacilityService{
 		
 		return hotelFacilityRepository.save(hotelFacility);
 	}
-
 	@Override
 	public List<HotelFaclity> getHotelFacilityByAllGivenFacilities(int wifi, int resturant, int ac,
 			int mealsIncluded) {
@@ -30,7 +29,4 @@ public class HotelFacilityServiceImpl implements HotelFacilityService{
 			throw e;
 		}
 	}
-	
-	
-
 }

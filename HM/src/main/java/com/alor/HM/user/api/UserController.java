@@ -31,6 +31,9 @@ public class UserController {
 		return new ResponseEntity<UserEntity>(userEntity, HttpStatus.OK);
 	}
 	
+	/**
+	 * to delete user
+	 */
 	@RequestMapping(value = "/{userId}", method = RequestMethod.DELETE)
 	public ResponseEntity<Boolean> deleteHotel(@PathVariable int userId) {
 		try {

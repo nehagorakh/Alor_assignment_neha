@@ -11,6 +11,4 @@ public interface UserService {
 	public void deleteUser(int userId);
 
 	public List<UserEntity> getUserByIdIn(List<Integer> userIds);
-	
-
 }

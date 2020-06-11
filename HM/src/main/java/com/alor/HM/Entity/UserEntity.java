@@ -38,7 +38,7 @@ public class UserEntity {
 	@UpdateTimestamp
 	private Timestamp updatedAt;
 	
-    private String city;
+    private String city; 
     private String type;
     
     @Email(message = "Please provide valid Email address")
