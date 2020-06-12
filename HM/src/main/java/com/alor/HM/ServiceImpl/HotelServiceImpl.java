@@ -107,6 +107,8 @@ public class HotelServiceImpl implements HotelService{
 		// first getting hotelIds for given facilities
 		List<HotelFaclity> hotelFacilityList = hotelFacilityService.getHotelFacilityByAllGivenFacilities(wifiInt,
 				resturantInt, acInt, mealsIncludedInt);
+		if(hotelFacilityList.isEmpty())
+			return hotelResponseBeanList;
 
 		Set<Integer> hotelIds = hotelFacilityList.stream().map(hf -> hf.getHotelId()).collect(Collectors.toSet());
 
@@ -171,13 +173,14 @@ public class HotelServiceImpl implements HotelService{
 			BeanUtils.copyProperties(hotelFacilityMap.get(hotelEntity.getId()).get(0), hotelResponseBean);
             
 			// getting and setting available rooms
-			if(hotelRoomBookingMapListGroupByHotelId.get(hotelEntity.getId()) != null)
-				hotelResponseBean.setAvailableRooms(hotelResponseBean.getNumberOfRooms()						- (hotelRoomBookingMapListGroupByHotelId.get(hotelEntity.getId()).stream().mapToInt(hrb -> hrb.getNumberOfRooms()).sum()));
+			if(!hotelRoomBookingMapListGroupByHotelId.isEmpty() && hotelRoomBookingMapListGroupByHotelId.get(hotelEntity.getId()) != null)
+				hotelResponseBean.setAvailableRooms(hotelResponseBean.getNumberOfRooms() - (hotelRoomBookingMapListGroupByHotelId.
+						get(hotelEntity.getId()).stream().mapToInt(hrb -> hrb.getNumberOfRooms()).sum()));
 					
 			else
 				hotelResponseBean.setAvailableRooms(hotelEntity.getNumberOfRooms());
-
-			if (hotelRatingMapGroupByRating.size() > 0)
+         
+			if (!hotelRatingMapGroupByRating.isEmpty() && hotelRatingMapGroupByRating.get(hotelEntity.getId()) != null)
 				hotelResponseBean.setAverageRating((int) hotelRatingMapGroupByRating.get(hotelEntity.getId()).stream()
 						.mapToDouble(r -> r.getRating()).average().getAsDouble());
 			hotelResponseBeanList.add(hotelResponseBean);
